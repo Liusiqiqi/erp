@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ON</title>
+<link rel="stylesheet" type="text/css"
+	href="../../js/extjs/resources/css/ext-all.css" />
+<script type="text/javascript" src="../../js/extjs/ext-all.js"></script>
+<script type="text/javascript" src="../../js/extjs/ext-lang-zh_CN.js"></script>
+    <script>
+        Ext.onReady(function(){
+            Ext.BLANK_IMAGE_URL = "../extjs/resources/images/default/s.gif";
+            Ext.QuickTips.init();
+           mainWindow.show();
+
+        });
+
+        var stroedt=Ext.create('Ext.data.Store', {
+            data:{'items':[
+                { 'name': '10111',  "dizhi":"北京",  "bianma":"40016","lianxi":"李忠"  },
+                { 'name': '10112',  "dizhi":"上海",  "bianma":"68016" ,"lianxi":"朱经理"},
+                { 'name': '10113', "dizhi":"天津",  "bianma":"408973" ,"lianxi":"周总" },
+                { 'name': '10114', "dizhi":"重庆", "bianma":"404567" ,"lianxi":"刘经理" }
+            ]},
+            model: 'User',
+            fields:['name', 'dizhi','bianma', 'bianma','lianxi'],
+            proxy: {
+                type: 'memory',
+                reader: {
+                    type: 'json',
+                    root: 'items'
+                }
+            }
+        });
+
+
+
+//        var formpalcd=Ext.create('Ext.form.Panel', { //表单
+//            title: 'Simple Form',
+//            bodyPadding: 5,
+//            width: 350,
+//            // 将会通过 AJAX 请求提交到此URL
+//            // url: 'save-form.php',
+//
+//            // 表单域 Fields 将被竖直排列, 占满整个宽度
+//            layout: 'anchor',
+//            defaults: {
+//                anchor: '100%'
+//            },
+//
+//            // The fields
+//            defaultType: 'textfield',
+//            items: [{
+//                fieldLabel: 'First Name',
+//                name: 'first',
+//                allowBlank: false
+//            },{
+//                fieldLabel: 'Last Name',
+//                name: 'last',
+//                allowBlank: false
+//            }],
+//
+//            // 重置 和 保存 按钮.
+//            buttons: [{
+//                text: '重置',
+//                handler: function() {
+//                    this.up('form').getForm().reset();
+//                }
+//            }, {
+//                text: '保存',
+//                formBind: true, //only enabled once the form is valid
+//                disabled: true,
+//                handler: function() {
+//                    var form = this.up('form').getForm();
+//                    if (form.isValid()) {
+//                        form.submit({
+//                            success: function(form, action) {
+//                                Ext.Msg.alert('保存成功', action.result.msg);
+//                            },
+//                            failure: function(form, action) {
+//                                Ext.Msg.alert('操作失败', action.result.msg);
+//                            }
+//                        });
+//                    }
+//                }
+//            }]
+//        });
+
+
+
+
+
+        var mainWindow = new Ext.Window({
+            bodyPadding: 5,
+            width:280,
+            height:200,
+            title:"客户类别设定",
+            closable:true,
+            resizable:false, //设置是否可以改变大小
+            draggable:true, //设置是否可以拖
+
+            items:[{
+                layout:"column",
+                xtype:"form",
+                height:150,
+                itemCls:'required',
+                items:[	{
+                    xtype: 'textfield',
+                    name: 'photo',
+                    fieldLabel: '类别编号',
+                    labelWidth: 90
+                },{
+                    xtype: 'textfield',
+                    name: 'photo',
+                    fieldLabel: '类别名称',
+                    labelWidth: 90,
+                },	{
+                    xtype: 'textfield',
+                    name: 'photo',
+                    fieldLabel: '英文名称',
+                    labelWidth: 90
+                },{
+                    xtype     : 'textarea',
+                    grow      : true,
+                    name      : 'message',
+                    //  margin:"0 0 0 20",
+                    fieldLabel: '备注',
+                    //width:400,
+                    labelWidth: 90,
+                },
+                ]
+            },
+            ],
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+</body>
+</html>
